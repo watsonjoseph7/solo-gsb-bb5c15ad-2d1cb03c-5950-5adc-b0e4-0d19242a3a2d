@@ -1,0 +1,16 @@
+services:
+  api:
+    build: .
+    image: water-blending-api:latest
+    ports:
+      - "8000:8000"
+    environment:
+      APP_HOST: 0.0.0.0
+      APP_PORT: "8000"
+      DATABASE_PATH: /app/data/blends.db
+    volumes:
+      - blends-data:/app/data
+    restart: unless-stopped
+
+volumes:
+  blends-data:
